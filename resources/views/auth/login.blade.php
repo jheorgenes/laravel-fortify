@@ -1,19 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{{ route('login') }}" method="post">
-        @csrf
-        <input type="email" name="email" placeholder="Email">
-        <br>
-        <input type="password" name="password" placeholder="Password">
-        <br>
-        <button type="submit">Login</button>
-    </form>
-</body>
-</html>
+@extends('layouts.main_layout')
+@section('content')
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5 card p-5">
+            <form action="{{ route('login') }}" method="post">
+                @csrf
+                <p class="display-6 text-center">LOGIN</p>
+                <div class="mb-3">
+                    <label for="email">Usuário</label>
+                    <input type="email" name="email" id="email" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="password">Senha</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                </div>
+
+                <div class="mt-4 d-flex justify-content-between">
+                    <div>
+                        <a href="#">Ainda não tem conta?</a>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-secondary px-5">LOGIN</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
