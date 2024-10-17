@@ -44,10 +44,11 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         //--------------------------------------------
-        // Vamos definir a função que vai devolver a view de login (formulário)
+        // Função que devolve a view de login (formulário) [Essa função é chamada quando for definido o middleware auth, que identificará se o usuário não está autenticado]
+        // Se o usuário não estiver autenticado, essa função será chamada pelo Fortify e então será devolvido a tela de login
         //--------------------------------------------
-        // Fortify::loginView(function () {
-        //     return view('auth.login');
-        // });
+        Fortify::loginView(function () {
+            return view('auth.login');
+        });
     }
 }
