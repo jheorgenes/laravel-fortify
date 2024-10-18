@@ -44,11 +44,21 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         //--------------------------------------------
-        // Função que devolve a view de login (formulário) [Essa função é chamada quando for definido o middleware auth, que identificará se o usuário não está autenticado]
-        // Se o usuário não estiver autenticado, essa função será chamada pelo Fortify e então será devolvido a tela de login
+        // O Fortify permite que você determine qual será a sua página (view) de login com a função abaixo.
+        // Toda vez que for acessado a rota de login, o Fortify será o responsável por chamar essa função automaticamente.
+        // Essa função também é chamada quando for definido o middleware auth, que identificará se o usuário não está autenticado
+        // Se o usuário não estiver autenticado, o Fortify então chamará essa função automaticamente.
         //--------------------------------------------
         Fortify::loginView(function () {
             return view('auth.login');
+        });
+
+        //--------------------------------------------
+        // O Fortify permite que você determine qual será a sua página (view) de register (registro de novo usuário) com a função abaixo.
+        // Devemos especificar a função abaixo para determinar qual será a view a ser chamada para registrar novos usuários
+        //--------------------------------------------
+        Fortify::registerView(function () {
+            return view('auth.register');
         });
     }
 }
