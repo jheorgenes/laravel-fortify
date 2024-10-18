@@ -60,5 +60,22 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::registerView(function () {
             return view('auth.register');
         });
+
+        //--------------------------------------------
+        // O Fortify permite que você determine qual será a sua página (view) de forgot-password (Esqueci minha senha) com a função abaixo.
+        // Devemos especificara view a ser chamada para recadastrar senha de usuário
+        //--------------------------------------------
+        Fortify::requestPasswordResetLinkView(function () {
+            return view('auth.forgot-password');
+        });
+
+        //--------------------------------------------
+        // Função que será chamada quando o usuário utilizar o recurso (esqueci minha senha) e receber o link no e-mail para resetar a senha
+        // Quando o usuário clicar no link, essa função será acionada e ele será redirecionado para uma nova página (view) para registrar a nova senha
+        // Essa função precisa receber o $request como argumento e passar para a view esse request, para saber quem é o usuário que está solicitando essa nova senha
+        //--------------------------------------------
+        Fortify::resetPasswordView(function ($request) {
+            return view('auth.reset-password', ['request' => $request]);
+        });
     }
 }

@@ -82,3 +82,9 @@ Rodando a Seed que foi modificada
 ```sh
 $ php artisan db:seed --class=DatabaseSeeder
 ```
+
+## Reincluindo linguagens e traduções nesse projeto Laravel
+```sh
+$ php artisan lang:publish
+```
+
